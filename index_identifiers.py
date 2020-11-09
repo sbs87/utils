@@ -2,10 +2,11 @@ import requests
 from xml.etree import cElementTree as ET
 import time
 import csv
-pause_time=5
+import sys
+pause_time=int(sys.argv[1]) #5
 output=""
-
-with open("/Users/stevensmith/Projects/OpenBioLink/ALL_DIR/graph_files/ncbigenes.1") as ncbigenes:
+input_list=sys.argv[2]
+with open(input_list) as ncbigenes:
     ids = csv.reader(ncbigenes, delimiter='\t')
     for row in ids:
         id=row[0]
@@ -16,7 +17,7 @@ with open("/Users/stevensmith/Projects/OpenBioLink/ALL_DIR/graph_files/ncbigenes
 #for i in range(1,100,1):
         time.sleep(pause_time)
         #id=str(i)
-        db="gene"
+        db=sys.argv[3] #"gene"
         webenv_url='https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db='+db+'&term='+id+'&usehistory=y'
         try:
             resp = requests.get(webenv_url)
