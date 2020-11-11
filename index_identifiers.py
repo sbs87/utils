@@ -19,7 +19,7 @@ with open(input_list) as input_list_ids:
         query_results[id]=query_db.query_db(db,id)
         print(query_results[id])
 
-with open(outout_file_name, 'w') as csvfile:  
+with open(outout_file_name, 'w', newline="\n") as csvfile:  
     csvwriter = csv.writer(csvfile)    
     csvwriter.writerow(query_results.values()) 
 
