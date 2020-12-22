@@ -1,1 +1,1 @@
-sort $1 | uniq -c | sort -n |  sed 's/^ *//g' | sed  's/ /	/g' 
+sort $1 | uniq -c | sort -nr |  sed 's/^ *//g' | sed  's/ /	/g' 
